@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "SimpleClient",
+			"path": "SimpleClient"
+		}
+	],
+	"settings": {}
+}

@@ -10,6 +10,8 @@
             "includePath": [
                 "c:/Users/pvalim/Documents/OneDrive-Projetos/OneDrive/projetos/LoRa/LoRa-PlatformIO/SimpleClient/include",
                 "c:/Users/pvalim/Documents/OneDrive-Projetos/OneDrive/projetos/LoRa/LoRa-PlatformIO/SimpleClient/src",
+                "c:/Users/pvalim/Documents/OneDrive-Projetos/OneDrive/projetos/LoRa/LoRa-PlatformIO/SimpleClient/.pio/libdeps/ttgo-lora32-v1/RadioHead",
+                "C:/Users/pvalim/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
                 "C:/Users/pvalim/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/config",
                 "C:/Users/pvalim/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/app_trace",
                 "C:/Users/pvalim/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/app_update",
@@ -91,7 +93,6 @@
                 "C:/Users/pvalim/.platformio/packages/framework-arduinoespressif32/libraries/Preferences/src",
                 "C:/Users/pvalim/.platformio/packages/framework-arduinoespressif32/libraries/SD/src",
                 "C:/Users/pvalim/.platformio/packages/framework-arduinoespressif32/libraries/SD_MMC/src",
-                "C:/Users/pvalim/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
                 "C:/Users/pvalim/.platformio/packages/framework-arduinoespressif32/libraries/SPIFFS/src",
                 "C:/Users/pvalim/.platformio/packages/framework-arduinoespressif32/libraries/SimpleBLE/src",
                 "C:/Users/pvalim/.platformio/packages/framework-arduinoespressif32/libraries/Ticker/src",
@@ -109,6 +110,8 @@
                 "path": [
                     "c:/Users/pvalim/Documents/OneDrive-Projetos/OneDrive/projetos/LoRa/LoRa-PlatformIO/SimpleClient/include",
                     "c:/Users/pvalim/Documents/OneDrive-Projetos/OneDrive/projetos/LoRa/LoRa-PlatformIO/SimpleClient/src",
+                    "c:/Users/pvalim/Documents/OneDrive-Projetos/OneDrive/projetos/LoRa/LoRa-PlatformIO/SimpleClient/.pio/libdeps/ttgo-lora32-v1/RadioHead",
+                    "C:/Users/pvalim/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
                     "C:/Users/pvalim/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/config",
                     "C:/Users/pvalim/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/app_trace",
                     "C:/Users/pvalim/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/app_update",
@@ -190,7 +193,6 @@
                     "C:/Users/pvalim/.platformio/packages/framework-arduinoespressif32/libraries/Preferences/src",
                     "C:/Users/pvalim/.platformio/packages/framework-arduinoespressif32/libraries/SD/src",
                     "C:/Users/pvalim/.platformio/packages/framework-arduinoespressif32/libraries/SD_MMC/src",
-                    "C:/Users/pvalim/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
                     "C:/Users/pvalim/.platformio/packages/framework-arduinoespressif32/libraries/SPIFFS/src",
                     "C:/Users/pvalim/.platformio/packages/framework-arduinoespressif32/libraries/SimpleBLE/src",
                     "C:/Users/pvalim/.platformio/packages/framework-arduinoespressif32/libraries/Ticker/src",

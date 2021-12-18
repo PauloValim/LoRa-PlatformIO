@@ -1,10 +1,16 @@
-// LoRa 9x_TX
-// -*- mode: C++ -*-
-// Example sketch showing how to create a simple messaging client (transmitter)
-// with the RH_RF95 class. RH_RF95 class does not provide for addressing or
-// reliability, so you should only use RH_RF95 if you do not need the higher
-// level messaging abilities.
-// It is designed to work with the other example LoRa9x_RX
+/**
+ * @file main.cpp
+ * @author Paulo Valim
+ * @brief 
+ * @version 0.1
+ * @date 2021-12-18
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ * Exemplo de um cliente simples para as placas TTGO e Heltec
+ * Para estas placas é necessário usar o driver SPI por software em função
+ * da conexão dos pinos à placa LoRa (SX12??)
+ */
  
 #include <SPI.h>
 #include <RH_RF95.h>

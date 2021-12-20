@@ -10,11 +10,8 @@
  * Exemplo de um cliente simples para as placas TTGO e Heltec
  * Para estas placas é necessário usar o driver SPI por software em função
  * da conexão dos pinos à placa LoRa (SX12??)
-<<<<<<< HEAD
  * mudanca feita no PC
-=======
  * modificado a partir do mac
->>>>>>> 200b1fec2846c35539e6844b382a6f2929c06f93
  */
  
 #include <SPI.h>

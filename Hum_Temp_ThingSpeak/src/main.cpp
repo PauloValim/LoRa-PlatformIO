@@ -1,20 +1,17 @@
 #include <Arduino.h>
-// rf95_client.pde
-// -*- mode: C++ -*-
-// Example sketch showing how to create a simple messageing client
-// with the RH_RF95 class. RH_RF95 class does not provide for addressing or
-// reliability, so you should only use RH_RF95 if you do not need the higher
-// level messaging abilities.
-// It is designed to work with the other example rf95_server
-// Tested with Anarduino MiniWirelessLoRa, Rocket Scream Mini Ultra Pro with
-// the RFM95W, Adafruit Feather M0 with RFM95
+/***
+ * cliente efetuando envio de dados de temperatura  e umidade para 
+ * o ThingSpeak. Versão utilizando o pro mini + E19
+ * 
+ ***/
+
 #include <SPI.h>
 #include <LoRa.h>
 #include <DHT.h>
 
-#define DHTPIN 5
+#define DHTPIN 5  // pino de dados do DHT21
 #define DHTTYPE DHT21   // AM3201
-DHT dht(DHTPIN, DHTTYPE);
+DHT dht(DHTPIN, DHTTYPE);  // cria instância do objeto dht
 /****
 //define the pins used by the LoRa transceiver module TTGO
 #define SCK 5
@@ -34,18 +31,15 @@ DHT dht(DHTPIN, DHTTYPE);
 #define TXEN 8
 #define RXEN 7
 
-
-//433E6 for Asia
-//866E6 for Europe
-//915E6 for North America
 #define BAND 915E6
 
 // estrutura da mensagem que vai ser trocada
 struct MsgStruct {
-  uint8_t header[4];
+  uint8_t header[4]; // quatro bytes ?? diferença entre as bibliotecas RH_RF95.h e Lora.h
+  uint8_t ID[3]; // id do nodo transmissor
   float temp; //= "the quick brown fox jump over the crazy dog";
   float hum;
-  uint16_t count;
+  uint16_t CRC;
 };
 
 // permite acessar a mnensagem como um array de bytes.
@@ -56,10 +50,10 @@ union MsgUnion {
  
 union MsgUnion msg_tx;
 
-String LoRaData;
+String LoRaData;  // Buffer para recepcao de mensagem de confirmação
 
 long lastSendTime = 0;        // last send time
-long int interval = 60000;          // interval between sends
+long interval = 10000;          // interval between sends
 uint8_t ackOk = 0;
 
 void setup() 
@@ -92,24 +86,63 @@ void setup()
   }
   Serial.println("LoRa Initializing OK!");
 
-
+// configurações da transmissão LoRa
   LoRa.setTxPower(20);
   LoRa.setFrequency(915E6);
   LoRa.setSpreadingFactor(7);
   LoRa.setSignalBandwidth(125E3);
   LoRa.setCodingRate4(5);
   LoRa.setPreambleLength(8);
-  LoRa.setSyncWord(0x12);
+  LoRa.setSyncWord(0x12);  // 0x12 = 34 em decimal
   LoRa.enableCrc();
+ 
 
-// inicializacao do header
+
+// inicializacao do header  ?? não sei pra que serve
  msg_tx.msg.header[0]= 255;
  msg_tx.msg.header[1]= 255;
  msg_tx.msg.header[2]= 0;
  msg_tx.msg.header[3]= 0;
+
+ // inicializa o ID
+ msg_tx.msg.ID[0] = 1;
+ msg_tx.msg.ID[1] = 1;
+ msg_tx.msg.ID[2] = 1;
    
-  
 }
+
+
+uint16_t calcByte(uint16_t crc, uint8_t b)
+{
+    uint32_t i;
+    crc = crc ^ (uint32_t)b << 8;
+    
+    for ( i = 0; i < 8; i++)
+    {
+        if ((crc & 0x8000) == 0x8000)
+            crc = crc << 1 ^ 0x1021;
+        else
+            crc = crc << 1;
+    }
+    return crc & 0xffff;
+}
+
+uint16_t CRC16(uint8_t *pBuffer,uint32_t length)
+{
+    uint16_t wCRC16=0;
+    uint32_t i;
+    if (( pBuffer==0 )||( length==0 ))
+    {
+      return 0;
+    }
+    for ( i = 0; i < length; i++)
+    { 
+      wCRC16 = calcByte(wCRC16, pBuffer[i]);
+    }
+    return wCRC16;
+}
+
+
 
 void sendMessage(){
   digitalWrite(TXEN, HIGH);
@@ -121,11 +154,7 @@ void sendMessage(){
   LoRa.write(msg_tx.msg_array, sizeof(msg_tx.msg_array));
   LoRa.endPacket();
   digitalWrite(TXEN, LOW);
-  msg_tx.msg.count++;
-  
 }
-
-
 
 void onReceive(int packetSize) {
   if (packetSize == 0) return;          // if there's no packet, return 0
@@ -145,8 +174,8 @@ void onReceive(int packetSize) {
 
 
 void readDHT(){
-  char temp[6];
-  char hum[6];
+  // char temp[6];
+  // char hum[6];
     // Reading temperature or humidity takes about 250 milliseconds!
   // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
   float h = dht.readHumidity();
@@ -156,8 +185,10 @@ void readDHT(){
 
   msg_tx.msg.temp = t;
   msg_tx.msg.hum = h;
-  dtostrf(t, 3, 1, temp);
-  dtostrf(h, 3, 1, hum);
+
+
+  // dtostrf(t, 3, 1, temp);
+  // dtostrf(h, 3, 1, hum);
   // Read temperature as Fahrenheit (isFahrenheit = true)
   float f = dht.readTemperature(true);
 
@@ -167,10 +198,10 @@ void readDHT(){
     return;
   }
 
-  // Compute heat index in Fahrenheit (the default)
-  float hif = dht.computeHeatIndex(f, h);
-  // Compute heat index in Celsius (isFahreheit = false)
-  float hic = dht.computeHeatIndex(t, h, false);
+  // // Compute heat index in Fahrenheit (the default)
+  // float hif = dht.computeHeatIndex(f, h);
+  // // Compute heat index in Celsius (isFahreheit = false)
+  // float hic = dht.computeHeatIndex(t, h, false);
 
 
 //  sprintf(msg_tx.msg.pangrama, "Humidity: %s / Temperature %s°C", hum, temp);
@@ -191,7 +222,16 @@ void readDHT(){
 void loop()
 {
 
-  if (millis() - lastSendTime > interval) {
+  if (millis() - lastSendTime > interval) { // efetua a transmissão a cada "interval" (ms)
+
+ //   Serial.println(msg_tx.msg.pangrama);
+    lastSendTime = millis();            // timestamp the message
+    readDHT();
+
+    msg_tx.msg.CRC = CRC16(msg_tx.msg.ID,sizeof(msg_tx)-6);
+    Serial.print("CRC envio: ");
+    Serial.println(msg_tx.msg.CRC, HEX);
+
     sendMessage();
     ackOk= 0; // indica que aguarda reconhecimento desta mensagem
     Serial.print("Sending ");
@@ -199,9 +239,7 @@ void loop()
       Serial.print(msg_tx.msg_array[i], HEX);
     }
     Serial.println("");
- //   Serial.println(msg_tx.msg.pangrama);
-    lastSendTime = millis();            // timestamp the message
-    readDHT();
+
  //   interval = random(2000) + 1000;    // 2-3 seconds
   }
 

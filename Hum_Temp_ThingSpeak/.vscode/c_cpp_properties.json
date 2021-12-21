@@ -1,0 +1,64 @@
+//
+// !!! WARNING !!! AUTO-GENERATED FILE!
+// PLEASE DO NOT MODIFY IT AND USE "platformio.ini":
+// https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags
+//
+{
+    "configurations": [
+        {
+            "name": "PlatformIO",
+            "includePath": [
+                "c:/Users/pvalim/Documents/OneDrive-Projetos/OneDrive/projetos/LoRa/LoRa-PlatformIO/Hum_Temp_ThingSpeak/include",
+                "c:/Users/pvalim/Documents/OneDrive-Projetos/OneDrive/projetos/LoRa/LoRa-PlatformIO/Hum_Temp_ThingSpeak/src",
+                "c:/Users/pvalim/Documents/OneDrive-Projetos/OneDrive/projetos/LoRa/LoRa-PlatformIO/Hum_Temp_ThingSpeak/.pio/libdeps/pro16MHzatmega328/LoRa/src",
+                "C:/Users/pvalim/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                "c:/Users/pvalim/Documents/OneDrive-Projetos/OneDrive/projetos/LoRa/LoRa-PlatformIO/Hum_Temp_ThingSpeak/.pio/libdeps/pro16MHzatmega328/DHT sensor library",
+                "c:/Users/pvalim/Documents/OneDrive-Projetos/OneDrive/projetos/LoRa/LoRa-PlatformIO/Hum_Temp_ThingSpeak/.pio/libdeps/pro16MHzatmega328/Adafruit Unified Sensor",
+                "C:/Users/pvalim/.platformio/packages/framework-arduino-avr/cores/arduino",
+                "C:/Users/pvalim/.platformio/packages/framework-arduino-avr/variants/eightanaloginputs",
+                "C:/Users/pvalim/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                "C:/Users/pvalim/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                "C:/Users/pvalim/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                "C:/Users/pvalim/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                "C:/Users/pvalim/.platformio/packages/tool-unity",
+                ""
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "path": [
+                    "c:/Users/pvalim/Documents/OneDrive-Projetos/OneDrive/projetos/LoRa/LoRa-PlatformIO/Hum_Temp_ThingSpeak/include",
+                    "c:/Users/pvalim/Documents/OneDrive-Projetos/OneDrive/projetos/LoRa/LoRa-PlatformIO/Hum_Temp_ThingSpeak/src",
+                    "c:/Users/pvalim/Documents/OneDrive-Projetos/OneDrive/projetos/LoRa/LoRa-PlatformIO/Hum_Temp_ThingSpeak/.pio/libdeps/pro16MHzatmega328/LoRa/src",
+                    "C:/Users/pvalim/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                    "c:/Users/pvalim/Documents/OneDrive-Projetos/OneDrive/projetos/LoRa/LoRa-PlatformIO/Hum_Temp_ThingSpeak/.pio/libdeps/pro16MHzatmega328/DHT sensor library",
+                    "c:/Users/pvalim/Documents/OneDrive-Projetos/OneDrive/projetos/LoRa/LoRa-PlatformIO/Hum_Temp_ThingSpeak/.pio/libdeps/pro16MHzatmega328/Adafruit Unified Sensor",
+                    "C:/Users/pvalim/.platformio/packages/framework-arduino-avr/cores/arduino",
+                    "C:/Users/pvalim/.platformio/packages/framework-arduino-avr/variants/eightanaloginputs",
+                    "C:/Users/pvalim/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                    "C:/Users/pvalim/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                    "C:/Users/pvalim/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                    "C:/Users/pvalim/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                    "C:/Users/pvalim/.platformio/packages/tool-unity",
+                    ""
+                ]
+            },
+            "defines": [
+                "PLATFORMIO=50204",
+                "ARDUINO_AVR_PRO",
+                "F_CPU=16000000L",
+                "ARDUINO_ARCH_AVR",
+                "ARDUINO=10808",
+                "__AVR_ATmega328P__",
+                ""
+            ],
+            "cStandard": "c11",
+            "cppStandard": "c++11",
+            "compilerPath": "C:/Users/pvalim/.platformio/packages/toolchain-atmelavr/bin/avr-gcc.exe",
+            "compilerArgs": [
+                "-mmcu=atmega328p",
+                ""
+            ]
+        }
+    ],
+    "version": 4
+}

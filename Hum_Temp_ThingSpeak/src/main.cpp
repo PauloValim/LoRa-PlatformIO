@@ -53,7 +53,7 @@ union MsgUnion msg_tx;
 String LoRaData;  // Buffer para recepcao de mensagem de confirmação
 
 long lastSendTime = 0;        // last send time
-long interval = 10000;          // interval between sends
+long interval = 60000;          // interval between sends
 uint8_t ackOk = 0;
 
 void setup() 
